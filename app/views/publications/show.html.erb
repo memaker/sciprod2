@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @publication.title %>
+</p>
+
+<p>
+  <strong>Authors:</strong>
+  <%= @publication.authors %>
+</p>
+
+<p>
+  <strong>Pubmed:</strong>
+  <%= @publication.pubmed_id %>
+</p>
+
+<p>
+  <strong>Impact factor:</strong>
+  <%= number_with_precision(@publication.impact_factor, :precision => 2) %>
+</p>
+
+<p>
+  <strong>Date of print:</strong>
+  <%= @publication.date_of_print %>
+</p>
+
+<%= link_to 'Edit', edit_publication_path(@publication) %> |
+<%= link_to 'Back', publications_path %>

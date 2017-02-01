@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Publications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Authors</th>
+      <th>Pubmed</th>
+      <th>Impact factor</th>
+      <th>Date of print</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @publications.each do |publication| %>
+      <tr>
+        <td><%= publication.title %></td>
+        <td><%= publication.authors %></td>
+        <td><%= publication.pubmed_id %></td>
+        <td><%= number_with_precision(publication.impact_factor, :precision => 2) %></td>
+        <td><%= publication.date_of_print %></td>
+        <td><%= link_to 'Show', publication %></td>
+        <td><%= link_to 'Edit', edit_publication_path(publication) %></td>
+        <td><%= link_to 'Destroy', publication, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Publication', new_publication_path %>
