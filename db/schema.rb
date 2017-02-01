@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224203311) do
+ActiveRecord::Schema.define(version: 20170128210057) do
+
+  create_table "publications", force: :cascade do |t|
+    t.string   "title"
+    t.string   "authors"
+    t.string   "pubmed_id"
+    t.decimal  "impact_factor"
+    t.date     "date_of_print"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

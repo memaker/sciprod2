@@ -1,3 +1,16 @@
+Development notes
+
+Publications:
+rails g scaffold Publication title:string authors:string pubmed_id:string impact_factor:decimal date_of_print:date
+
+
+
+
+
+
+
+***
+
 Rails Devise
 ========================
 
@@ -56,3 +69,4 @@ Preferences:
 ________________________
 
 License
+
