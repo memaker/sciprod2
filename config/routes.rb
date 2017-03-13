@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :participations
+
   resources :authors
 
   root to: 'home#index'
