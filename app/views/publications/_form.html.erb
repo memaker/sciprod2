@@ -16,12 +16,12 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :authors %><br>
-    <%= f.text_field :authors %>
-  </div>
-  <div class="field">
     <%= f.label :pubmed_id %><br>
     <%= f.text_field :pubmed_id %>
+  </div>
+  <div class="field">
+    <%= f.label :author_id %><br>
+    <%= f.collection_select(:author_id, Author.all, :id, :name ) %>
   </div>
   <div class="field">
     <%= f.label :impact_factor %><br>

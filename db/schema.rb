@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170310160149) do
+ActiveRecord::Schema.define(version: 20170310154603) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -19,19 +19,13 @@ ActiveRecord::Schema.define(version: 20170310160149) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "participations", force: :cascade do |t|
-    t.integer  "publication_id", limit: 4
-    t.integer  "author_id",      limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+  create_table "authors_publications", id: false, force: :cascade do |t|
+    t.integer "author_id",      limit: 4, null: false
+    t.integer "publication_id", limit: 4, null: false
   end
-
-  add_index "participations", ["author_id"], name: "index_participations_on_author_id", using: :btree
-  add_index "participations", ["publication_id"], name: "index_participations_on_publication_id", using: :btree
 
   create_table "publications", force: :cascade do |t|
     t.string   "title",         limit: 255
-    t.string   "authors",       limit: 255
     t.string   "pubmed_id",     limit: 255
     t.decimal  "impact_factor",             precision: 10
     t.date     "date_of_print"
@@ -58,6 +52,4 @@ ActiveRecord::Schema.define(version: 20170310160149) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "participations", "authors"
-  add_foreign_key "participations", "publications"
 end
