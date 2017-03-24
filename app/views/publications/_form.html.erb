@@ -20,10 +20,6 @@
     <%= f.text_field :pubmed_id %>
   </div>
   <div class="field">
-    <%= f.label :author_id %><br>
-    <%= f.collection_select(:author_id, Author.all, :id, :name ) %>
-  </div>
-  <div class="field">
     <%= f.label :impact_factor %><br>
     <%= f.text_field :impact_factor %>
   </div>

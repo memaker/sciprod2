@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Authors</th>
       <th>Pubmed</th>
       <th>Impact factor</th>
       <th>Date of print</th>
@@ -18,7 +17,6 @@
     <% @publications.each do |publication| %>
       <tr>
         <td><%= publication.title %></td>
-        <td><%= publication.authors %></td>
         <td><%= publication.pubmed_id %></td>
         <td><%= number_with_precision(publication.impact_factor, :precision => 2) %></td>
         <td><%= publication.date_of_print %></td>
