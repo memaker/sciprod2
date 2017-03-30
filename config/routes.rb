@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :interests
+
   resources :participations
 
   resources :authors
