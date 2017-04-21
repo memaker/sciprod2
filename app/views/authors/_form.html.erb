@@ -15,6 +15,11 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <%= f.label :author_id %><br>
+    <%= f.collection_select(:interest_id, Interest.all, :id, :name, prompt: true) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

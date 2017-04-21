@@ -9,7 +9,8 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    respond_with(@author)
+    @interests = @author.interests
+    respond_with(@author, @interests)
   end
 
   def new
@@ -42,6 +43,6 @@ class AuthorsController < ApplicationController
     end
 
     def author_params
-      params.require(:author).permit(:name)
+      params.require(:author).permit(:name, :interest_id)
     end
 end
