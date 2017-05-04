@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329170446) do
+ActiveRecord::Schema.define(version: 20170504153859) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20170329170446) do
 
   add_index "interests", ["author_id"], name: "index_interests_on_author_id", using: :btree
 
+  create_table "measurements", force: :cascade do |t|
+    t.float    "value",      limit: 24
+    t.datetime "timestamp"
+    t.integer  "sensor_id",  limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "measurements", ["sensor_id"], name: "index_measurements_on_sensor_id", using: :btree
+
   create_table "publications", force: :cascade do |t|
     t.string   "title",         limit: 255
     t.string   "pubmed_id",     limit: 255
@@ -40,6 +50,13 @@ ActiveRecord::Schema.define(version: 20170329170446) do
     t.date     "date_of_print"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+  end
+
+  create_table "sensors", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "location",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,4 +79,5 @@ ActiveRecord::Schema.define(version: 20170329170446) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "interests", "authors"
+  add_foreign_key "measurements", "sensors"
 end

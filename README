@@ -3,7 +3,9 @@ Development notes
 Publications:
 rails g scaffold Publication title:string authors:string pubmed_id:string impact_factor:decimal date_of_print:date
 
-
+rails g scaffold Sensor name:string location:string
+rails g scaffold Measurement value:float timestamp:timestamp sensor:references
+bin/rake db:migrate RAILS_ENV=development
 
 
 

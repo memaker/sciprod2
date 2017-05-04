@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sensor.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @sensor.location %>
+</p>
+
+<%= link_to 'Edit', edit_sensor_path(@sensor) %> |
+<%= link_to 'Back', sensors_path %>
+
+<% if @measurements %>
+<table class="table table-striped">
+	<tr>
+		<th>Value</th>
+		<th>Timestamp</th>
+	</tr>
+	<% @measurements.each do |m|%>
+	<tr>
+		<td><%= m.value %></td>
+		<td><%= m.timestamp %></td>
+	</tr>
+	<%end%>
+</table>

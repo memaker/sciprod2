@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :measurements
+
+  resources :sensors
+
   resources :interests
 
   resources :participations
