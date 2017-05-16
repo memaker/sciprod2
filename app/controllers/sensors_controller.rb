@@ -9,7 +9,8 @@ class SensorsController < ApplicationController
   end
 
   def show
-    @measurements = @sensor.measurements
+    @measurements = Measurement.where(:sensor => @sensor)
+    #@measurements = Measurement.all
     respond_with(@sensor, @measurements)
   end
 
