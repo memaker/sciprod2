@@ -1,25 +1,19 @@
 source 'https://rubygems.org'
 ruby '2.2.0'
 gem 'rails', '4.2.0'
-gem 'mysql2', '~> 0.3.18'
+#gem 'mysql2', '~> 0.3.18'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-
+gem 'bootstrap-sass'
+gem 'devise'
 # graphics and data treatment by date
 gem 'chartkick'
 gem 'groupdate'
 
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-end
-gem 'bootstrap-sass'
-gem 'devise'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
@@ -31,14 +25,18 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'sqlite3'
-end
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
 end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+end
+group :production do
+  # these two are needed for Heroku deployment
+  gem 'pg'
+  gem 'rails_12factor'
 end

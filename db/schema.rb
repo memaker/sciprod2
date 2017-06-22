@@ -14,69 +14,69 @@
 ActiveRecord::Schema.define(version: 20170615160101) do
 
   create_table "authors", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "authors_publications", id: false, force: :cascade do |t|
-    t.integer "author_id",      limit: 4, null: false
-    t.integer "publication_id", limit: 4, null: false
+    t.integer "author_id",      null: false
+    t.integer "publication_id", null: false
   end
+
+  add_index "authors_publications", ["author_id", "publication_id"], name: "index_authors_publications_on_author_id_and_publication_id"
 
   create_table "interests", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.integer  "author_id",  limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name"
+    t.integer  "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "interests", ["author_id"], name: "index_interests_on_author_id", using: :btree
+  add_index "interests", ["author_id"], name: "index_interests_on_author_id"
 
   create_table "measurements", force: :cascade do |t|
-    t.float    "value",      limit: 24
-    t.integer  "sensor_id",  limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.float    "value"
+    t.integer  "sensor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "measurements", ["sensor_id"], name: "index_measurements_on_sensor_id", using: :btree
+  add_index "measurements", ["sensor_id"], name: "index_measurements_on_sensor_id"
 
   create_table "publications", force: :cascade do |t|
-    t.string   "title",         limit: 255
-    t.string   "pubmed_id",     limit: 255
-    t.decimal  "impact_factor",             precision: 10
+    t.string   "title"
+    t.string   "pubmed_id"
+    t.decimal  "impact_factor"
     t.date     "date_of_print"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "sensors", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "location",   limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name"
+    t.string   "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",                   limit: 255
+    t.string   "name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  add_foreign_key "interests", "authors"
-  add_foreign_key "measurements", "sensors"
 end
