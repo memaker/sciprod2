@@ -17,14 +17,16 @@
 <table class="table table-striped">
 	<tr>
 		<th>Value</th>
-		<th>Timestamp</th>
+		<th>Created at</th>
 	</tr>
 	<% @measurements.each do |m|%>
 	<tr>
 		<td><%= m.value %></td>
-		<td><%= m.timestamp %></td>
+		<td><%= m.created_at %></td>
 	</tr>
 	<%end%>
 </table>
+<%= bar_chart @measurements.group(:created_at).count %>
+<%= line_chart @measurements.group_by_day(:created_at).count %>
 <%end%>
 

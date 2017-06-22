@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170504153859) do
+ActiveRecord::Schema.define(version: 20170615160101) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20170504153859) do
 
   create_table "measurements", force: :cascade do |t|
     t.float    "value",      limit: 24
-    t.datetime "timestamp"
     t.integer  "sensor_id",  limit: 4
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false

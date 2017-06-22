@@ -7,6 +7,10 @@ rails g scaffold Sensor name:string location:string
 rails g scaffold Measurement value:float timestamp:timestamp sensor:references
 bin/rake db:migrate RAILS_ENV=development
 
+Generate a migration to remove column Timestamp from the table Measurements
+rails generate migration RemoveTimestampFromMeasurements timestamp:datetime
+rake db:migrate
+
 
 
 
