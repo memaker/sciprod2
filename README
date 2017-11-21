@@ -1,5 +1,8 @@
 Development notes
 
+To get the environment, execute:
+$ rvm use ruby-2.2.0
+
 Publications:
 rails g scaffold Publication title:string authors:string pubmed_id:string impact_factor:decimal date_of_print:date
 
